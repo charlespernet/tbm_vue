@@ -1,10 +1,14 @@
 require 'nokogiri'
 
-class Scrapper
-  def data_for_line(line)
+class TbmService
+  def initialize(attributes)
+    @line = attributes[:line] || '1'
+  end
+
+  def data_for_line
     # lianes 1 = 1 / Lianes 5 = 6
     @data ||= process
-    @data.select { |bus| bus[:line] == line }
+    @data.select { |bus| bus[:line] == @line }
   end
 
   private
