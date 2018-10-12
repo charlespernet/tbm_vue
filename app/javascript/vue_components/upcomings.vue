@@ -7,9 +7,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>15min</td>
+      <tr v-for='bus in buses'>
+        <td>{{bus.name}}</td>
+        <td>{{bus.real}}</td>
       </tr>
     </tbody>
   </table>
@@ -17,6 +17,13 @@
 
 <script>
 export default {
+  props: ['nexts'],
+
+  data() {
+    return {
+      buses: this.nexts,
+    }
+  }
 }
 </script>
 

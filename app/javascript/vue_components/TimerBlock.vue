@@ -3,7 +3,7 @@
     <p>{{next}}</p>
     <busSelect></busSelect>
     <timer></timer>
-    <upcomings></upcomings>
+    <upcomings v-bind:nexts='buses'></upcomings>
   </div>
 </template>
 
@@ -36,7 +36,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 p {
   font-size: 2em;
   text-align: center;
