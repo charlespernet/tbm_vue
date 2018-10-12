@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <p>{{next}}</p>
     <busSelect></busSelect>
     <timer></timer>
     <upcomings></upcomings>
@@ -16,7 +17,22 @@ export default {
     Timer,
     BusSelect,
     Upcomings
-  }
+  },
+
+  props: ['obuses'],
+
+  data() {
+    return {
+      buses: JSON.parse(this.obuses),
+    }
+  },
+
+  computed: {
+    next: function () {
+      const bus = this.buses[0]
+      return `${bus.name} - ${bus.real}`
+    }
+  },
 }
 </script>
 
