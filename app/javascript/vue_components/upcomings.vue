@@ -17,12 +17,8 @@
 
 <script>
 export default {
-  props: ['nexts'],
-
-  data() {
-    return {
-      buses: this.nexts,
-    }
+  props: {
+    buses: Array
   }
 }
 </script>

@@ -2,8 +2,8 @@
   <div id="app">
     <p>{{next.name}}</p>
     <busSelect></busSelect>
-    <timer></timer>
-    <upcomings v-bind:nexts='buses'></upcomings>
+    <timer v-bind:next='next'></timer>
+    <upcomings v-bind:buses='buses'></upcomings>
   </div>
 </template>
 
@@ -13,17 +13,13 @@ import BusSelect from './bus_select.vue';
 import Upcomings from './upcomings.vue';
 
 export default {
-  components: {
-    Timer,
-    BusSelect,
-    Upcomings
+  props: {
+    jsonBuses: String
   },
-
-  props: ['obuses'],
 
   data() {
     return {
-      buses: JSON.parse(this.obuses),
+      buses: JSON.parse(this.jsonBuses),
     }
   },
 
@@ -31,6 +27,12 @@ export default {
     next: function () {
       return this.buses[0]
     }
+  },
+
+  components: {
+    Timer,
+    BusSelect,
+    Upcomings
   },
 }
 </script>
