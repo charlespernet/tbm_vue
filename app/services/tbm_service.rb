@@ -1,8 +1,12 @@
 require 'nokogiri'
+require 'open-uri'
 
 class TbmService
   def initialize(attributes)
     @line = attributes[:line] || '1'
+    @url = 'https://data.bordeaux-metropole.fr/wps?key=0239ADSUWY&service=WPS&version=1.0.0&request=Execute&Identifier=saeiv_arret_passages&DataInputs=GID=517'
+    # @file_on_disk = File.open('storage/tbm_example.xml')
+    @xml_file = get_xml_from_tbm
   end
 
   def data_for_line
@@ -13,9 +17,13 @@ class TbmService
 
   private
 
+  def get_xml_from_tbm
+    open(@url).read
+  end
+
   def process
-    file      = File.open('storage/tbm_example.xml')
-    document  = Nokogiri::XML(file)
+    # document  = Nokogiri::XML(@file_on_disk)
+    document  = Nokogiri::XML(@xml_file)
 
     document.xpath('//bm:SV_ARRET_P').map do |stop|
       {
