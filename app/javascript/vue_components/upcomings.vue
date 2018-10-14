@@ -19,6 +19,15 @@
 export default {
   props: {
     buses: Array
+  },
+
+  computed: {
+    date: function () {
+      return Math.trunc(Date.parse(this.next.real) / 1000)
+    },
+    minutes: function () {
+      return Math.trunc((this.date - this.now) / 60) % 60;
+    }
   }
 }
 </script>

@@ -25,13 +25,13 @@ export default {
   },
 
   computed: {
-    date() {
+    date: function () {
       return Math.trunc(Date.parse(this.next.real) / 1000)
     },
-    seconds() {
+    seconds: function () {
       return (this.date - this.now) % 60;
     },
-    minutes() {
+    minutes: function () {
       return Math.trunc((this.date - this.now) / 60) % 60;
     }
   },
