@@ -1,8 +1,8 @@
 <template >
   <div class="bus-select">
     <p>Bus 1</p>
-    <p>Bus 2</p>
-  </div>
+    <p>Bus 5</p>
+    </div>
 </template>
 
 <script>

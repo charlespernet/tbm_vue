@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <p>{{next.name}}</p>
-    <busSelect></busSelect>
+    <!-- <busSelect></busSelect> -->
     <timer v-bind:next='next'></timer>
-    <upcomings v-bind:buses='buses'></upcomings>
+    <upcomings v-bind:buses='nexts'></upcomings>
   </div>
 </template>
 
@@ -26,6 +26,10 @@ export default {
   computed: {
     next: function () {
       return this.buses[0]
+    },
+
+    nexts: function () {
+      return this.buses.slice(1)
     }
   },
 
