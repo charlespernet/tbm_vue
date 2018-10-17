@@ -7,26 +7,43 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for='bus in buses'>
+      <tr v-for='bus in busesTimes'>
         <td>{{bus.name}}</td>
-        <td>{{bus.real}}</td>
+        <td>{{bus.time | two_digits}} min</td>
       </tr>
     </tbody>
   </table>
 </template>
 
 <script>
+import two_digits from './mixins/two_digits_filter'
+
 export default {
+  mixins: [two_digits],
+
   props: {
     buses: Array
   },
 
+  data() {
+    return {
+      now: Math.trunc((new Date()).getTime() / 1000)
+    }
+  },
+
+  mounted() {
+    window.setInterval(() => {
+      this.now = Math.trunc((new Date()).getTime() / 1000);
+    }, 15000);
+  },
+
   computed: {
-    date: function () {
-      return Math.trunc(Date.parse(this.next.real) / 1000)
-    },
-    minutes: function () {
-      return Math.trunc((this.date - this.now) / 60) % 60;
+    busesTimes: function () {
+      const now = this.now
+      return this.buses.map(function(bus) {
+        const date = Math.trunc(Date.parse(bus.real) / 1000);
+        return {name: bus.name, time: Math.trunc((date - now) / 60) % 60}
+      })
     }
   }
 }
@@ -34,8 +51,16 @@ export default {
 
 <style lang="scss">
   table {
-    width: 50%;
+    width: 80%;
     margin: 0 auto;
     text-align: center;
+    font-size: 40px;
+  }
+
+  tbody:before {
+    content: "-";
+    display: block;
+    line-height: 1em;
+    color: transparent;
   }
 </style>

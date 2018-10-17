@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <p>{{next.name}}</p>
+    <div class="next-bus">
+      <p>{{next.name}} à l'arret Bourse du Travail</p>
+      <p>Prochain bus dans :</p>
+    </div>
     <!-- <busSelect></busSelect> -->
     <timer v-bind:next='next'></timer>
     <upcomings v-bind:buses='nexts'></upcomings>
@@ -42,7 +45,7 @@ export default {
 </script>
 
 <style>
-p {
+.next-bus {
   font-size: 2em;
   text-align: center;
 }
