@@ -1,21 +1,16 @@
 <template >
   <div class="timer">
-    <div class='timer-block'>
-      <p class='digit'>{{minutes | two_digits}}</p>
-      <p class='text'>min</p>
-    </div>
-    <div class='timer-block'>
-      <p class='digit'>{{seconds | two_digits}}</p>
-      <p class='text'>sec</p>
-    </div>
+    <p>{{minutes | two_digits}}</p>
+    <p>:</p>
+    <p>{{seconds | two_digits}}</p>
   </div>
 </template>
 
 <script>
-import two_digits from './mixins/two_digits_filter'
+import two_digits_filter from './mixins/two_digits_filter'
 
 export default {
-  mixins: [two_digits],
+  mixins: [two_digits_filter],
 
   props: {
     next: Object
@@ -50,26 +45,16 @@ export default {
 <style lang="scss">
   .timer {
     display: flex;
-    padding: 180px 0;
+    padding: 100px 0;
     width: 80%;
+    max-width: 550px;
     margin: 0 auto;
     justify-content: space-between;
     p {
       margin: 0;
+      font-size: 220px;
+      color: #a17c0b;
+      font-weight: bold;
     }
-    &-block {
-      display: flex;
-      align-items: baseline;
-    }
-  }
-
-  .digit {
-    font-size: 180px;
-    color: white;
-  }
-
-  .text {
-    font-size: 34px;
-    padding-left: 15px;
   }
 </style>

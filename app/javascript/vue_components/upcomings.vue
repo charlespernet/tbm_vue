@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import two_digits from './mixins/two_digits_filter'
+import two_digits_filter from './mixins/two_digits_filter'
 
 export default {
-  mixins: [two_digits],
+  mixins: [two_digits_filter],
 
   props: {
     buses: Array

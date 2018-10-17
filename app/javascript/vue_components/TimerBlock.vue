@@ -46,7 +46,13 @@ export default {
 
 <style>
 .next-bus {
-  font-size: 2em;
+  background: #a77b00;
+  padding: 80px;
+  margin: 50px;
+  color: white;
+  border-radius: 20px;
+  font-size: 2.2em;
+  font-weight: bold;
   text-align: center;
 }
 </style>
