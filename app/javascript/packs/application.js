@@ -1,5 +1,6 @@
 import Vue from 'vue/dist/vue.esm'
 import TimerBlock from '../vue_components/TimerBlock.vue'
+import 'style';
 
 Vue.component('timerblock', TimerBlock)
 
