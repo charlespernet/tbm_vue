@@ -5,8 +5,8 @@ class TbmService
   def initialize(attributes)
     @line = attributes[:line] || '1'
     @url = 'https://data.bordeaux-metropole.fr/wps?key=0239ADSUWY&service=WPS&version=1.0.0&request=Execute&Identifier=saeiv_arret_passages&DataInputs=GID=517'
-    @file = File.open('storage/tbm_example.xml')
-    # @file = get_xml_from_tbm
+    # @file = File.open('storage/tbm_example.xml')
+    @file = get_xml_from_tbm
   end
 
   def data_for_line
